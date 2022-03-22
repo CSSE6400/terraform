@@ -1,0 +1,16 @@
+content: |-
+  {{ .Header }}
+
+  {{ .Providers }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+  ## Examples
+
+  ```hcl
+  {{ include "examples/todoapp/main.tf" }}
+  ```
