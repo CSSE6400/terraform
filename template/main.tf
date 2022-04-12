@@ -36,6 +36,11 @@ resource "aws_launch_template" "template" {
       volume_size = var.storage_size
     }
   }
+
+  iam_instance_profile {
+    name = var.iam_role
+  }
+
   tag_specifications {
     resource_type = "instance"
 

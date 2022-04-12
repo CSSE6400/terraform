@@ -31,6 +31,13 @@ variable "storage_size" {
   description = "The size of the storage to use for the container."
   default = 8
 }
+
+variable "iam_role" {
+  type = string
+  description = "The name of the IAM role."
+  default = "LabInstanceProfile"
+}
+
 variable "ports" {
   type = map
   description = "The ports to map in the container, e.g. `{80: 8000}` to map port 80 of the EC2 instance to port 8000 in the container."
