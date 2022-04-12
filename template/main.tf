@@ -9,6 +9,7 @@ terraform {
 
 locals {
   ami = "ami-0a8b4cd432b1c3063"
+  login = var.github_pat != "" ? "echo ${var.github_pat} | docker login ghcr.io -u ${var.github_user} --password-stdin" : ""
   user_data = <<-EOT
 #!/bin/bash
 yum update -y
@@ -16,7 +17,8 @@ yum install -y docker
 service docker start
 systemctl enable docker
 usermod -a -G docker ec2-user
-docker run ${local.environment} ${local.ports} ${local.image}
+${local.login}
+docker run --hostname $(ec2-metadata -p | cut -f 2 -d' ') ${local.environment} ${local.ports} ${local.image}
   EOT
 }
 

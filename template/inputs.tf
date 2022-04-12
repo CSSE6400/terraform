@@ -14,6 +14,17 @@ variable "environment" {
   default = {}
 }
 
+variable "github_user" {
+  type = string
+  description = "The GitHub username to use for the container."
+  default = ""
+}
+  
+variable "github_pat" {
+  type = string
+  description = "The GitHub PAT to use for the container."
+  default = ""
+}
 variable "ports" {
   type = map
   description = "The ports to map in the container, e.g. `{80: 8000}` to map port 80 of the EC2 instance to port 8000 in the container."
