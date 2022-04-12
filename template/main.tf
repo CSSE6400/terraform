@@ -28,6 +28,14 @@ resource "aws_launch_template" "template" {
   user_data = base64encode(local.user_data)
   vpc_security_group_ids = local.security_groups
 
+  block_device_mappings {
+    device_name = "/dev/xvda"
+
+    ebs {
+      delete_on_termination = true
+      volume_size = var.storage_size
+    }
+  }
   tag_specifications {
     resource_type = "instance"
 

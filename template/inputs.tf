@@ -25,6 +25,12 @@ variable "github_pat" {
   description = "The GitHub PAT to use for the container."
   default = ""
 }
+
+variable "storage_size" {
+  type = number
+  description = "The size of the storage to use for the container."
+  default = 8
+}
 variable "ports" {
   type = map
   description = "The ports to map in the container, e.g. `{80: 8000}` to map port 80 of the EC2 instance to port 8000 in the container."
