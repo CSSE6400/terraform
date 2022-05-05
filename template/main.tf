@@ -8,7 +8,7 @@ terraform {
 }
 
 locals {
-  ami = "ami-0a8b4cd432b1c3063"
+  ami = var.ami
   login = var.github_pat != "" ? "echo ${var.github_pat} | docker login ghcr.io -u ${var.github_user} --password-stdin" : ""
   user_data = <<-EOT
 #!/bin/bash
